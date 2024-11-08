@@ -9,6 +9,7 @@ import UploadForm from './Components/UploadForm';
 import TestConnection from './Components/TestConnection';
 import LivenessCheck from './Components/LivenessCheck';
 import Verified from './Components/Verified';
+import NotVerified from './Components/NotVerified';
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
           <Route path="/upload" element={<UploadForm />} />
           <Route path="/otp" element={<OTP />} />
           <Route path="/verified" element={<Verified />} />
+          <Route path="/notverified" element={<NotVerified />} />
           <Route path="/test-connection" element={<TestConnection />} />
         </Routes>
       </main>

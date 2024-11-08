@@ -5,7 +5,7 @@ from flask import Blueprint, request, jsonify
 from flask_cors import CORS
 from scipy.spatial import distance as dist
 import os
-from services.face_match import face_matching  # Import the face_matching function
+from services.face_match import face_matching  
 
 # Initialize Blueprint
 liveness_bp = Blueprint('liveness', __name__)
@@ -72,7 +72,7 @@ def process_liveness():
         return jsonify({"message": "No blink detected, please try again!"})
 
     # Step 2: Face Matching
-    aadhaar_image_path = "uploads/aadhar.png"  # Adjust the path as needed
+    aadhaar_image_path = "uploads/aadhar.png"
     face_match_result = face_matching(aadhaar_image_path, video_path)
     os.remove(video_path)
 

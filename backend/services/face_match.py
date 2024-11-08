@@ -5,16 +5,27 @@ import os
 
 # Function to enhance image visibility
 def enhance_image_visibility(image):
+    # Convert grayscale image to BGR for HSV manipulation
     hsv_image = cv2.cvtColor(image, cv2.COLOR_GRAY2BGR)
     hsv_image = cv2.cvtColor(hsv_image, cv2.COLOR_BGR2HSV)
+    
+    # Split HSV channels and adjust saturation and brightness
     h, s, v = cv2.split(hsv_image)
-    v = cv2.add(v, 30)
-    s = cv2.add(s, 40)
+    v = cv2.add(v, 30)  # Increase brightness
+    s = cv2.add(s, 40)  # Increase saturation
+    
+    # Merge back HSV channels and convert to BGR, then back to grayscale
     enhanced_hsv_image = cv2.merge([h, s, v])
     enhanced_bgr_image = cv2.cvtColor(enhanced_hsv_image, cv2.COLOR_HSV2BGR)
     enhanced_gray_image = cv2.cvtColor(enhanced_bgr_image, cv2.COLOR_BGR2GRAY)
+    
+    # Apply sharpening kernel
     kernel = np.array([[0, -1, 0], [-1, 5, -1], [0, -1, 0]])
-    return cv2.filter2D(enhanced_gray_image, -1, kernel)
+    final_image = cv2.filter2D(enhanced_gray_image, -1, kernel)
+    
+    cv2.imwrite("temp_img.png", final_image)
+    
+    return final_image
 
 # Function to get face encoding from an image file
 def get_face_encoding(image_path):

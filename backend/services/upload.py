@@ -8,7 +8,9 @@ otp_bp = Blueprint('otp', __name__)
 # Mock map for Aadhaar to mobile number
 aadhaar_to_mobile_map = {
     "680746720046": "+919569879937",
-    "844233800631": "+917905206186"
+    "844233800631": "+917905206186",
+    "938272968079": "+919569879937",
+    "940282830672": "+919569879937",
 }
 
 # Temporary in-memory storage for testing purposes
